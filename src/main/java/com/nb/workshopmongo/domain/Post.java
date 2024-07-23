@@ -1,11 +1,14 @@
 package com.nb.workshopmongo.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.nb.workshopmongo.dto.AuthorDto;
+import com.nb.workshopmongo.dto.CommentDto;
 
 @Document
 public class Post {
@@ -16,6 +19,8 @@ public class Post {
     private String title;
     private String body;
     private AuthorDto author;
+
+    private List<CommentDto> comments = new ArrayList<>();
     
     public Post(){}
 
@@ -67,5 +72,13 @@ public class Post {
         this.author = author;
     }
     
+
+    public List<CommentDto> getComments() {
+        return this.comments;
+    }
+
+    public void setComments(List<CommentDto> comments) {
+        this.comments = comments;
+    }
 
 }
